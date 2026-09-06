@@ -1,5 +1,8 @@
 import React from "react";
-import { getDefaultCertificatePngUrl } from "./defaultCertificatePng";
+import {
+  getDefaultCertificatePngUrl,
+  getGeneratedCertificatePngUrl,
+} from "./defaultCertificatePng";
 
 export interface CertificateCardProps {
   name: string;
@@ -80,8 +83,8 @@ export const CertificateCard = React.forwardRef<HTMLDivElement, CertificateCardP
             }}
             onError={(e) => {
               const target = e.currentTarget as HTMLImageElement;
-              const fallback = getDefaultCertificatePngUrl();
-              if (target.src !== fallback) {
+              const fallback = getGeneratedCertificatePngUrl();
+              if (fallback && target.src !== fallback) {
                 target.src = fallback;
               }
             }}

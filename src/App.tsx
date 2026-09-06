@@ -10,7 +10,10 @@ import {
   FileImage
 } from "lucide-react";
 import { CertificateCard } from "./components/CertificateCard";
-import { getDefaultCertificatePngUrl } from "./components/defaultCertificatePng";
+import {
+  getDefaultCertificatePngUrl,
+  getGeneratedCertificatePngUrl,
+} from "./components/defaultCertificatePng";
 
 export default function App() {
   // Participant Name
@@ -112,7 +115,7 @@ export default function App() {
         img.onerror = () => {
           img.onload = () => resolve();
           img.onerror = (e2) => reject(e2);
-          img.src = getDefaultCertificatePngUrl();
+          img.src = getGeneratedCertificatePngUrl();
         };
         img.src = activeTemplateUrl;
       });

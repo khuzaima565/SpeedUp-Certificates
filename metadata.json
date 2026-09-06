@@ -1,0 +1,6 @@
+{
+  "name": "SpeedUp Attendee Card Generator",
+  "description": "Generate custom 1080x1080 event attendance poster cards and 3300x2515 certificates of participation instantly.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

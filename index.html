@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SpeedUp Attendee Card Generator</title>
+    <meta name="description" content="Generate custom 1080x1080 event attendance poster cards and 3300x2515 certificates of participation instantly." />
+    <meta property="og:title" content="SpeedUp Attendee Card Generator" />
+    <meta property="og:description" content="Generate custom 1080x1080 event attendance poster cards and 3300x2515 certificates of participation instantly." />
+    <!-- Prevent window.fetch write errors inside strict sandboxed iframe containers -->
+    <script>
+      (function() {
+        try {
+          var originalFetch = window.fetch;
+          var customFetch = originalFetch;
+          Object.defineProperty(window, 'fetch', {
+            get: function() {
+              return customFetch;
+            },
+            set: function(value) {
+              customFetch = value;
+            },
+            configurable: true,
+            enumerable: true
+          });
+        } catch (e) {
+          console.warn("Could not patch window.fetch directly:", e);
+          try {
+            var proto = Object.getPrototypeOf(window) || Window.prototype;
+            if (proto) {
+              Object.defineProperty(proto, 'fetch', {
+                get: function() {
+                  return window.hasOwnProperty('__custom_fetch__') ? window.__custom_fetch__ : originalFetch;
+                },
+                set: function(value) {
+                  window.__custom_fetch__ = value;
+                },
+                configurable: true,
+                enumerable: true
+              });
+            }
+          } catch (err) {
+            console.warn("Could not patch Window prototype fetch:", err);
+          }
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
